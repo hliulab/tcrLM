@@ -1,0 +1,4 @@
+data/pretrain/pretrain_data.zip filter=lfs diff=lfs merge=lfs -text
+pretrained_model/flash_protein.pt filter=lfs diff=lfs merge=lfs -text
+pretrained_model/pep_pretrained_model.bin filter=lfs diff=lfs merge=lfs -text
+pretrained_model/tcr_pretrained_model.bin filter=lfs diff=lfs merge=lfs -text
