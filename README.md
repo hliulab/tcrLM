@@ -1,10 +1,10 @@
-# tcrLM: A large language model for predicting T cell receptor-antigen binding specificity 
-tcrLM is an advanced computational model that predicts the binding specificity of antigens to TCR molecules. By using a large language model as the model encoder, tcrLM provides a comprehensive evaluation of antigen immunogenicity, which is crucial for the development of effective immunotherapies
+# tcrLM: a lightweight protein language model for predicting T cell receptor and epitope binding specificity
+tcrLM is a lightweight masked language model to learn the representations of TCR CDR3 sequence. Also, virtual adversarial training is introduced to reduce the model's sensitivity to slight input variations, thereby enhance its generalizability. tcrLM is pretrained on a curated 100M-scale TCR CDR3 sequences, and then fine-tuned for TCR-antigen binding prediction.
 
 ## Key features
 - **Large language model**: Leveraged the powerful semantic understanding capabilities of large language models.
 - **Virtual adversarial training**: Enhances model robustness by training on perturbed data.
-- **Superior performance**: Outperforms existing methods on pTCR prediction tasks on multiple datasets.
+- **Superior performance**: Outperforms existing methods on pTCR prediction tasks on independent, external, and COVID-19 test datasets.
 
 For inquiries or collaborations, please contact: hliu@njtech.edu.cn
 
@@ -29,26 +29,26 @@ For inquiries or collaborations, please contact: hliu@njtech.edu.cn
 ` pip install -r requirements.txt `
 
 ## Instructions for use
-The training data for pTCR bindings is stored in the <kbd>data</kbd> folder. Both the training and testing scripts are included in the <kbd>source</kbd> folder.The source code of tcrLM model is included in the <kbd>models</kbd> folder.The trained models are stored in the <kbd>trained_model</kbd> folder.
+The training data for pTCR bindings is stored in the <kbd>data</kbd> folder. Both training and testing scripts are included in the <kbd>source</kbd> folder. The source code of tcrLM model is included in the <kbd>models</kbd> folder. The trained models are stored in the <kbd>trained_model</kbd> folder.
 
 ### Input data format
-For pretraining, the input data should be a CSV file with two columns: `sequence`, which represents the input sequence, and `label`, which indicates the type of sequence. For fine-tuning, the data should also be in CSV format, with two columns: `tcr`, representing the TCR CDR3 sequence, and `peptide`, representing the peptide sequence.
+For pretraining, the input data should be a CSV file with only one columns: `sequence`, which represents the input sequence. For fine-tuning, the data should also be in CSV format, with two columns: `tcr`, representing the TCR CDR3 sequence, and `peptide`, representing the peptide sequence.
 
 ### Model training
-After ensuring that the required environment and dependencies are installed, you can execute the following commands for fine-tuning and pretraining.
->You can run the following command to pre-train the model
+Once the required environment and dependencies are installed, you can execute the following commands for pretraining and fine-tuning.
+>Run the following command to pre-train the model
 `cd source`
 
 `deepspeed pretrain.py --deepspeed_config ./deepspeed.json`
 
->You can run the following command to fine-tune the model
+>Run the following command to fine-tune the model
 
 `cd source`
 
 `deepspeed fine_tune.py --deepspeed_config ./deepspeed.json`
 
 ### Model testing
-Given your fine-tuned model or our trained model (saved in trained_model folder), you can evaluate it on our provided demo test set using the following test scripts.
+Given the fine-tuned model or our prebuilt model (saved in trained_model folder), user can evaluate it on our provided demo test set using the following test scripts.
 
 `cd source`
 
@@ -56,12 +56,10 @@ Given your fine-tuned model or our trained model (saved in trained_model folder)
 
 
 ### Hyperparameter adjustment
-If transfer the model using your custom dataset, you may need to adjust the hyperparameters within the Python scripts. Hyperparameters include learning rate, batch size, number of epochs, and other model-specific parameters.
+To train tcrLM model using custom dataset, user may want to adjust the hyperparameters within the Python scripts. Hyperparameters include learning rate, batch size, number of epochs, and other model-specific parameters.
 
 Note: Ensure that the file paths and script names provided in the commands match those in your project directory. The source/ directory and script names like TCR_test.py are placeholders and should be replaced with the actual paths and filenames used in your implementation.
 
-### Customizing output
-To customize the output results, users can modify the parameters within each script. Detailed comments within the code provide descriptions and guidance for parameter adjustments.
 
 ## Support
 For further assistance, bug reports, or to request new features, please contact us at hliu@njtech.edu.cn or open an issue on the [GitHub repository page](https://github.com/hliulab/tcrLM).
