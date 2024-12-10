@@ -93,21 +93,15 @@ class MyDataSet(Data.Dataset):
     def __getitem__(self, idx):
         return self.pep_inputs[idx], self.tcr_inputs[idx], self.labels[idx],self.pep_length[idx],self.tcr_length[idx]
 
-
-def label_to_onehot(label: str):
-    label_map = {'tcr':[1,0], 'pep':[0,1]}
-    return label_map.get(label, [0,0])
-
 def create_antigen_dataset_from_csv_with_pandas(file_path: str):
     df = pd.read_csv(file_path)
     sequences = df['sequence'].tolist()
-    labels = [label_to_onehot(label) for label in df['label'].tolist()]
 
     def get_length():
         return len(sequences)
 
     def get_item(idx):
-        return str(idx), sequences[idx], labels[idx]
+        return str(idx), sequences[idx]
     return get_length, get_item
 
 class AntigenDataset(Data.Dataset):
@@ -118,9 +112,8 @@ class AntigenDataset(Data.Dataset):
     def __len__(self):
         return self.length
     def __getitem__(self, idx):
-        id_, sequence, label = self.get_item(idx)
-        label_tensor = torch.tensor(label, dtype=torch.float32)
-        return id_, sequence, label_tensor
+        id_, sequence = self.get_item(idx)
+        return id_, sequence
 
 def performances_to_pd(performances_list):
     metrics_name = ['roc_auc', 'accuracy', 'mcc', 'f1', 'aupr', 'sensitivity', 'specificity', 'precision', 'recall']
