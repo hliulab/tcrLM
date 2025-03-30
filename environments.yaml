@@ -1,0 +1,51 @@
+name: tcrLM
+channels:
+  - conda-forge
+  - schrodinger
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - bzip2=1.0.8=h4bc722e_7
+  - ca-certificates=2025.2.25=h06a4308_0
+  - joblib=1.4.2=py310h06a4308_0
+  - ld_impl_linux-64=2.43=h712a8e2_4
+  - libblas=3.9.0=16_linux64_openblas
+  - libcblas=3.9.0=16_linux64_openblas
+  - libffi=3.4.6=h2dba641_0
+  - libgcc=14.2.0=h767d61c_2
+  - libgcc-ng=14.2.0=h69a702a_2
+  - libgfortran-ng=11.2.0=h00389a5_1
+  - libgfortran5=11.2.0=h1234567_1
+  - libgomp=14.2.0=h767d61c_2
+  - liblapack=3.9.0=16_linux64_openblas
+  - liblzma=5.6.4=hb9d3cd8_0
+  - libnsl=2.0.1=hd590300_0
+  - libopenblas=0.3.21=h043d6bf_0
+  - libsqlite=3.49.1=hee588c1_1
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - libuuid=2.38.1=h0b41bf4_0
+  - libxcrypt=4.4.36=hd590300_1
+  - libzlib=1.3.1=hb9d3cd8_2
+  - ncurses=6.5=h2d0b736_3
+  - openssl=3.4.1=h7b32b05_0
+  - pip=25.0.1=pyh8b19718_0
+  - python=3.10.16=he725a3c_1_cpython
+  - python_abi=3.10=5_cp310
+  - readline=8.2=h8c095d6_2
+  - scikit-learn=1.6.1=py310h6a678d5_0
+  - scipy=1.8.1=py310h7612f91_0
+  - setuptools=75.8.2=pyhff2d567_0
+  - threadpoolctl=3.5.0=py310h2f386ee_0
+  - tk=8.6.13=noxft_h4845f30_101
+  - wheel=0.45.1=pyhd8ed1ab_1
+  - pip:
+    - einops==0.8.1
+    - numpy==1.23.0
+    - pandas==2.2.2
+    - python-dateutil==2.9.0.post0
+    - pytz==2025.1
+    - six==1.17.0
+    - tqdm==4.67.1
+    - tzdata==2025.1
+prefix: /home/anaconda3/envs/tcrLM

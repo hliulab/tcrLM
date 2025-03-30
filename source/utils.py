@@ -29,7 +29,7 @@ def pad_to_fixed_length(batch_token, fixed_length, padding_value):
     padded_tokens = torch.full((len(batch_token), fixed_length), fill_value=padding_value, dtype=torch.long)
     for i, tokens in enumerate(batch_token):
         length = min(len(tokens), fixed_length)
-        padded_tokens[i, :length] = torch.tensor(tokens[:length], dtype=torch.long)
+        padded_tokens[i, :length] = tokens[:length].clone().detach()
     return padded_tokens
 
 def mask_sequence(token_indices, mask_token_idx, lengths):
