@@ -1,10 +1,10 @@
-# tcrLM: A large language model for predicting T cell receptor-antigen binding specificity 
-tcrLM is an advanced computational model that predicts the binding specificity of antigens to TCR molecules. By using a large language model as the model encoder, tcrLM provides a comprehensive evaluation of antigen immunogenicity, which is crucial for the development of effective immunotherapies
+# tcrLM: A lightweight language model for predicting T cell receptor-antigen binding specificity 
+tcrLM introduces a lightweight BERT-based masked language model pretrained on the largest TCR CDR3 sequence dataset (100M+), incorporating virtual adversarial training to enhance robustness, and achieves state-of-the-art performance in TCR-antigen binding prediction while demonstrating clinical relevance through correlations with immunotherapy outcomes.
 
 ## Key features
-- **Large language model**: Leveraged the powerful semantic understanding capabilities of large language models.
-- **Virtual adversarial training**: Enhances model robustness by training on perturbed data.
-- **Superior performance**: Outperforms existing methods on pTCR prediction tasks on multiple datasets.
+- **Large language model**: : tcrLM introduces a BERT-based masked language model pretrained on over 100 million distinct TCR CDR3 sequences.
+- **Virtual adversarial training**: tcrLM incorporates virtual adversarial training and novel positional encoding (RoPE).
+- **Superior performance**: tcrLM achieves superior generalizability across diverse test sets, outperforms existing methods and larger protein language models.
 
 For inquiries or collaborations, please contact: hliu@njtech.edu.cn
 
@@ -43,16 +43,16 @@ For inquiries or collaborations, please contact: hliu@njtech.edu.cn
 The training data for pTCR bindings is stored in the <kbd>data</kbd> folder. Both the training and testing scripts are included in the <kbd>source</kbd> folder.The source code of tcrLM model is included in the <kbd>models</kbd> folder.The trained models are stored in the <kbd>trained_model</kbd> folder.
 
 ### Input data format
-For pretraining, the input data should be a CSV file with two columns: `sequence`, which represents the input sequence, and `label`, which indicates the type of sequence. For fine-tuning, the data should also be in CSV format, with two columns: `tcr`, representing the TCR CDR3 sequence, and `peptide`, representing the peptide sequence.
+For pretraining, the input data should be a CSV file with two columns: `sequence`, which represents the input sequence, and `label`, which indicates the type of sequence. For fine-tuning, the data should also be in CSV format, with two columns: `tcr` representing the TCR CDR3 sequence, and `peptide` representing the peptide sequence.
 
 ### Model training
 After ensuring that the required environment and dependencies are installed, you can execute the following commands for fine-tuning and pretraining.
->You can run the following command to pre-train the model
+>Running following command to pre-train the model
 `cd source`
 
 `python pretrain.py`
 
->You can run the following command to fine-tune the model
+>Running the following command to fine-tune the model
 
 `cd source`
 
@@ -66,7 +66,7 @@ Given your fine-tuned model or our trained model (saved in trained_model folder)
 `python TCR_test.py`
 
 ### Testing with Docker
-You can also run our test code using Docker, which has been verified for compatibility in a Windows environment.
+You can also run our code using Docker, which has been verified for compatibility in a Windows environment.
 Start the Docker container:
 ```bash
 docker pull diaoxing359/tcrlm
