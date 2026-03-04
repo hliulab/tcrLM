@@ -1,4 +1,4 @@
-# tcrLM: A lightweight language model for predicting T cell receptor-antigen binding specificity 
+# A TCR-specific lightweight language model generalizes to unseen epitopes and predicts immunotherapy benefit
 tcrLM introduces a lightweight BERT-based masked language model pretrained on the largest TCR CDR3 sequence dataset (100M+), incorporating virtual adversarial training to enhance robustness, and achieves state-of-the-art performance in TCR-antigen binding prediction while demonstrating clinical relevance through correlations with immunotherapy outcomes.
 
 ## Key features
